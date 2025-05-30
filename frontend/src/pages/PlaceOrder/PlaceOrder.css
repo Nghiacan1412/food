@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;800&display=swap");
+
+body {
+  background: #fef6e4; /* Nền pastel nhạt cho toàn bộ trang */
+  margin: 0;
+  font-family: "Baloo 2", sans-serif;
+}
+
+.place-order {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  background: #ffebd2; /* Màu nền cam nhạt */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  font-family: "Baloo 2", sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+  margin: 30px 0; /* Khoảng cách với header và footer */
+  position: relative;
+}
+
+.place-order-left {
+  flex: 1;
+  padding: 20px;
+  background: #fff7e8; /* Màu trắng kem */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Giữ box-shadow để tạo chiều sâu */
+}
+
+.place-order-right {
+  flex: 1;
+  background: #ffebd2; /* Màu cam nhạt */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #af6d51;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+input,
+select {
+  font-weight: 400;
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px 0; /* Tăng margin-bottom để có chỗ cho thông báo lỗi */
+  border: 1px solid #d4a76a; /* Thêm viền mặc định, màu nâu nhạt */
+  border-radius: 8px;
+  background: #fff7e8;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Baloo 2", sans-serif;
+  transition: all 0.3s ease;
+}
+
+select {
+  appearance: none; /* Bỏ mũi tên mặc định của trình duyệt */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237a4b34' width='18px' height='18px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Thêm mũi tên tùy chỉnh */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+input:hover,
+select:hover {
+  background: #ffedd3;
+  border-color: #af6d51; /* Đổi màu viền khi hover */
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  background: #ffedd3;
+  border: 1px solid #af6d51; /* Viền đậm hơn khi focus */
+  box-shadow: 0 0 5px rgba(175, 109, 81, 0.3);
+}
+
+input::placeholder,
+select:invalid {
+  color: #b0a8a1;
+  font-style: italic;
+  font-weight: 400;
+}
+
+input:invalid,
+select:invalid {
+  border: 1px solid #e74c3c;
+  background: #ffe6e6;
+}
+
+/* Container cho mỗi field để chứa input/select và thông báo lỗi */
+.field-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Thông báo lỗi */
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 2px;
+  display: block;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+}
+
+/* Style cho input/select khi có lỗi */
+.error {
+  border: 1px solid #e74c3c !important;
+  background: #ffe6e6 !important;
+}
+
+/* Hiệu ứng rung */
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Đảm bảo input và select trong multi-fields không bị lệch */
+.multi-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.multi-fields .field-container {
+  flex: 1;
+}
+
+.cart-total {
+  padding: 15px;
+  border-radius: 8px;
+  background: #ffebd2;
+}
+
+.cart-total h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #af6d51;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+  color: #7a4b34;
+  margin: 10px 0;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(122, 75, 52, 0.2);
+}
+
+.cart-total-details:last-child {
+  border-bottom: none;
+  font-size: 20px;
+  color: #af6d51;
+  font-weight: 800;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--primary-color); /* Màu nâu nhạt */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+button:hover {
+  background-color: var(--secondary-color); /* Màu nâu đậm hơn khi hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+button::after {
+  content: "🐾"; /* Dấu chân mèo */
+  font-size: 16px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .place-order {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .place-order-left,
+  .place-order-right {
+    padding: 15px;
+  }
+
+  .multi-fields {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .multi-fields .field-container {
+    margin-bottom: 20px; /* Đảm bảo khoảng cách khi responsive */
+  }
+}

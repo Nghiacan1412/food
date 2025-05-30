@@ -1,0 +1,160 @@
+/* Import font Anime Ace */
+@font-face {
+  font-family: "Anime Ace";
+  src: url("../fonts/AnimeAce.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Tổng thể popup */
+.login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Nền mờ nhẹ, chill */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Container chính */
+.login-popup-container {
+  background: #f5e8d6; /* Màu beige nhạt, vintage */
+  padding: 30px;
+  border-radius: 15px; /* Bo góc nhẹ nhàng */
+  width: 100%;
+  max-width: 400px; /* Giới hạn chiều rộng cho gọn */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bóng đổ nhẹ, cổ điển */
+  font-family: "Anime Ace", sans-serif; /* Font Anime Ace */
+}
+
+/* Tiêu đề */
+.login-popup-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-popup-title h2 {
+  font-size: 24px;
+  color: #4a3f35; /* Màu nâu đất vintage */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px; /* Khoảng cách chữ rộng, chill */
+}
+
+.login-popup-title img {
+  width: 20px;
+  cursor: pointer;
+  filter: sepia(50%); /* Hiệu ứng nâu vàng vintage cho icon đóng */
+  transition: transform 0.2s ease;
+}
+
+.login-popup-title img:hover {
+  transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+/* Các ô input */
+.login-popup-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Khoảng cách giữa các ô thoải mái */
+  margin-bottom: 20px;
+}
+
+.login-popup-inputs input {
+  padding: 12px;
+  border: 2px solid #8b7b6b; /* Viền nâu nhạt vintage */
+  border-radius: 8px;
+  background: #fff8e8; /* Nền nhạt, ấm áp */
+  font-size: 16px;
+  color: #4a3f35;
+  outline: none;
+  font-family: "Anime Ace", sans-serif; /* Font Anime Ace cho input */
+  transition: border-color 0.3s ease;
+}
+
+.login-popup-inputs input:focus {
+  border-color: #d4a373; /* Viền sáng hơn khi focus, vibe ấm */
+}
+
+/* Nút đăng ký/đăng nhập */
+.login-popup-container button {
+  width: 100%;
+  padding: 12px;
+  background: #d4a373; /* Màu cam đất vintage */
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Anime Ace", sans-serif; /* Font Anime Ace cho nút */
+  transition: background 0.3s ease;
+}
+
+.login-popup-container button:hover {
+  background: #b88b5e; /* Tông trầm hơn khi hover */
+}
+
+/* Điều khoản */
+.login-popup-condition {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.login-popup-condition input[type="checkbox"] {
+  accent-color: #c98c5a; /* Tông cam đất ấm hơn */
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.login-popup-condition p {
+  font-size: 14px;
+  color: #5a4b3e; /* Tông nâu trầm hơn để dễ đọc */
+  margin: 0;
+  font-family: "Anime Ace", sans-serif;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .login-popup-condition {
+    gap: 8px;
+  }
+
+  .login-popup-condition input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .login-popup-condition p {
+    font-size: 13px;
+  }
+}
+
+/* Đoạn text chuyển đổi trạng thái */
+.login-popup-container p {
+  font-size: 14px;
+  color: #6b5e4f;
+  text-align: center;
+  font-family: "Anime Ace", sans-serif; /* Font Anime Ace */
+}
+
+.login-popup-container span {
+  color: #d4a373; /* Màu cam đất cho phần nhấn */
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.login-popup-container span:hover {
+  color: #b88b5e; /* Đổi màu khi hover */
+}

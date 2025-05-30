@@ -1,0 +1,100 @@
+.list {
+  width: 60%;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff8f0;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Định dạng tiêu đề */
+.list p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5a3e1b;
+  margin-bottom: 20px;
+}
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+/* Định dạng dòng trong bảng */
+.list-table-format {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 1fr 60px;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e0d5c8;
+  transition: background 0.2s ease-in-out;
+}
+
+.list-table-format:hover {
+  background: #fdf6ec;
+}
+
+/* Tiêu đề */
+.list-table-format.title {
+  background: #f5e6d5;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Hình ảnh */
+.list-table-format img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: auto;
+}
+
+/* Nội dung */
+.list-table-format p {
+  font-size: 16px;
+  color: #4d3a2a;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+}
+
+.list-table-format p:last-child {
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s ease-in-out;
+}
+
+.list-table-format p:last-child:hover {
+  color: darkred;
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .list {
+    width: 90%;
+    padding: 12px;
+  }
+
+  .list-table-format {
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 5px;
+    padding: 10px 0;
+  }
+
+  .list-table-format img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .list-table-format p {
+    font-size: 14px;
+  }
+}

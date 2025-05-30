@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Baloo+2:wght@400;700&family=Montserrat:wght@300;400;600&display=swap");
+
+:root {
+  --primary-color: #4a2c2c;
+  --secondary-color: #a35638;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --text-muted: #676767;
+  --highlight-color: #ff9800;
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Baloo 2", sans-serif;
+  --transition-duration: 0.5s;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.food-display {
+  margin-top: 20px;
+  padding: 0 20px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.food-display h2 {
+  font-family: var(--font-secondary);
+  font-size: max(2.5vw, 32px);
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.food-display h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 80px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  transform: translateX(-50%);
+  transition: width var(--transition-duration) cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.food-display h2:hover::after {
+  width: 140px;
+}
+
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  row-gap: 50px;
+  min-height: 400px; /* Đặt chiều cao tối thiểu */
+  align-items: start;
+}
+
+.food-display-list.single-item {
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes smooth-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(5px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.food-display-list > * {
+  animation: smooth-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--item-index, 0) * 0.08s);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+}
+
+.food-display-list > *:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Thông báo khi không có món */
+.no-items {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 40px 0;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  animation: gentle-appear 1.2s ease forwards;
+}
+
+@keyframes gentle-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 8px; /* Giảm khoảng cách giữa các nút */
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 10px 0;
+}
+
+.pagination-btn {
+  background: var(--text-color);
+  border: none;
+  color: var(--background-color);
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pagination-btn:hover {
+  background: #555; /* Nền sáng hơn khi hover */
+  transform: scale(1.05); /* Phóng to nhẹ */
+}
+
+.pagination-btn:active {
+  transform: scale(0.95); /* Hiệu ứng nhấn */
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-btn.active {
+  background: var(--secondary-color);
+  color: #fff;
+  font-weight: 600;
+}
+
+.pagination-btn.nav-btn {
+  background: #333; /* Nút Prev/Next cũng có nền đen */
+  font-size: 14px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn.nav-btn:hover {
+  background: #555;
+}
+
+.pagination-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 223, 203, 0.4); /* Hiệu ứng focus */
+}
+
+/* Bỏ hiệu ứng ::after không cần thiết */
+.pagination-btn::after {
+  display: none;
+}
+
+/* Thanh tìm kiếm */
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #ff9800;
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+}
+
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sort-bar label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.sort-bar select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.sort-bar select:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(178, 34, 34, 0.1);
+}
+
+.sort-bar select:disabled {
+  background-color: #f5f5f5;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.sort-bar select:focus {
+  border-color: var(--primary-color);
+  transform: scale(1.02); /* Phóng to nhẹ khi focus */
+}
+
+@media (max-width: 768px) {
+  .sort-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .sort-bar label {
+    font-size: 14px;
+  }
+
+  .sort-bar select {
+    appearance: none; /* Ẩn mũi tên mặc định */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    transition: all 0.3s ease;
+  }
+}

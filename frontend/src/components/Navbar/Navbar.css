@@ -1,0 +1,524 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Baloo+2:wght@400;700&family=Montserrat:wght@300;400;600&display=swap");
+
+:root {
+  /* Bảng màu vintage */
+  --vintage-cream: #f8f4e3;
+  --vintage-brown: #594a3c;
+  --vintage-rust: #a35638;
+  --vintage-sage: #778268;
+  --vintage-gold: #d3a95c;
+  --vintage-red: #873e23;
+  --vintage-navy: #2e3740;
+  --vintage-teal: #5e8c85;
+  --footer-bg: #d3c7a7;
+  --accent-color: #d4a373; /* Thêm màu cam nhạt từ Footer */
+
+  /* Gradient màu vintage */
+  --button-gradient: linear-gradient(135deg, #a35638, #873e23);
+  --button-hover-gradient: linear-gradient(135deg, #873e23, #6e321d);
+  --navbar-bg-gradient: linear-gradient(
+    180deg,
+    #f5e9d4 0%,
+    #fff5e1 100%
+  ); /* Gradient từ Footer */
+
+  /* Font và các giá trị khác */
+  --secondary-font: "Quicksand", sans-serif;
+  --border-radius: 20px;
+  --shadow-sm: 0px 4px 8px rgba(89, 74, 60, 0.2);
+  --shadow-md: 0px 6px 12px rgba(89, 74, 60, 0.3);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar {
+  display: grid;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: none;
+  transition: var(--transition);
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(-50vw + 50%);
+  right: calc(-50vw + 50%);
+  width: auto;
+  height: 100%;
+  background: var(--navbar-bg-gradient); /* Gradient từ Footer */
+  box-shadow: 0 2px 10px rgba(89, 74, 60, 0.1);
+  z-index: -1;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(-50vw + 50%);
+  right: calc(-50vw + 50%);
+  width: auto;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/paper-fibers.png"); /* Texture từ Footer */
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.navbar.scrolled {
+  padding: 10px 5%;
+}
+
+.navbar.scrolled::before {
+  box-shadow: 0 4px 12px rgba(89, 74, 60, 0.15);
+}
+
+.navbar .logo {
+  width: 150px; /* Đồng bộ kích thước với Footer */
+  height: auto;
+  border-radius: 50%;
+  border: 3px dashed var(--accent-color); /* Viền nét đứt từ Footer */
+  padding: 8px;
+  background-color: var(--vintage-cream);
+  transition: var(--transition);
+}
+
+.navbar.scrolled .logo {
+  width: 100px;
+}
+
+.navbar-menu {
+  font-family: "Baloo 2", sans-serif;
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  color: var(--vintage-brown);
+  font-size: 18px;
+  font-family: var(--primary-font);
+  margin: 0;
+  padding: 0;
+}
+.navbar-basket-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.dot {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--vintage-red); /* Màu đỏ vintage để nổi bật */
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.navbar-menu li {
+  font-weight: 900;
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0;
+  transition: var(--transition);
+  letter-spacing: 0.5px;
+  font-family: var(--primary-font);
+}
+
+.navbar-menu li:hover {
+  color: var(--accent-color); /* Đồng bộ với Footer */
+}
+
+.navbar-menu li::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color); /* Đồng bộ với Footer */
+  transition: var(--transition);
+}
+
+.navbar-menu li:hover::after {
+  width: 50px; /* Giới hạn chiều dài giống Footer */
+}
+
+.navbar-menu li.active {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.navbar-menu li.active::after {
+  width: 50px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar button {
+  background: var(--button-gradient);
+  font-size: 16px;
+  color: var(--vintage-cream);
+  border: none;
+  padding: 12px 28px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: var(--primary-font);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar button:hover {
+  background: var(--button-hover-gradient);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.navbar button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: transform 0.6s ease;
+  transform: skewX(-15deg);
+}
+
+.navbar button:hover::before {
+  transform: translateX(200%) skewX(-15deg);
+}
+
+.navbar-search-icon {
+  width: 42px;
+  height: 42px;
+  background-color: var(
+    --vintage-cream
+  ); /* Thay white bằng --vintage-cream để đồng bộ với nền Navbar */
+  border: 2px dashed var(--accent-color); /* Thêm viền nét đứt để phù hợp phong cách vintage */
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(
+    --vintage-brown
+  ); /* Đổi màu biểu tượng thành --vintage-brown để nổi bật */
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-search-icon:hover {
+  background-color: var(
+    --accent-color
+  ); /* Thay --footer-bg bằng --accent-color (#d4a373) để đồng bộ với Footer */
+  color: var(
+    --vintage-cream
+  ); /* Đổi màu biểu tượng khi hover để tương phản với nền */
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md); /* Tăng bóng đổ khi hover để tạo chiều sâu */
+}
+
+.nav-profile-dropdown {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid sandybrown;
+  outline: 2px solid white;
+  list-style: none;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+  min-width: 180px;
+
+  /* Ẩn dropdown ban đầu */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s;
+}
+
+/* Khi hover vào avatar, dropdown hiện lên */
+.navbar-profile:hover .nav-profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Cải thiện: Thêm focus state cho keyboard accessibility */
+.navbar-profile:focus-within .nav-profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-profile-dropdown li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none; /* bỏ gạch dưới nếu có */
+  color: inherit; /* giữ màu giống p */
+}
+
+.nav-profile-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+
+  /* Font chữ Baloo 2 */
+  font-family: "Baloo 2", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #8b4513; /* Màu nâu sẫm */
+}
+
+.nav-profile-dropdown li:hover {
+  background-color: #f5e1d2;
+  transform: scale(1.05); /* Hiệu ứng scale nhẹ khi hover */
+}
+
+/* Hiệu ứng fade-in đẹp hơn khi hover */
+.nav-profile-dropdown li img {
+  transition: transform 0.2s ease;
+}
+
+.nav-profile-dropdown li:hover img {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+/* Cách dòng giữa các mục */
+.nav-profile-dropdown hr {
+  border: none;
+  height: 1px;
+  background: #d4a373;
+  margin: 8px 0;
+}
+
+/* Giảm padding cho ul để gọn hơn */
+.nav-profile-dropdown ul {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--vintage-brown);
+}
+
+/* Nút hamburger cải tiến */
+.hamburger {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--vintage-brown);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Nút đóng menu mobile */
+.mobile-menu-close {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--vintage-cream);
+  border: 2px dashed var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.mobile-menu-close:hover {
+  transform: rotate(90deg);
+  background-color: var(--accent-color);
+}
+
+.mobile-menu-close img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mobile only - dành cho các phần tử chỉ xuất hiện trong menu mobile */
+.mobile-only {
+  display: none;
+}
+
+.mobile-button {
+  background: var(--button-gradient);
+  border-radius: var(--border-radius);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--vintage-cream);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mobile-button:hover {
+  background: var(--button-hover-gradient);
+  transform: translateY(-2px);
+}
+
+.mobile-button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Focus states cho accessibility */
+a:focus,
+button:focus,
+.navbar-search-icon:focus,
+.navbar-profile:focus-within,
+.mobile-button:focus {
+  outline: 2px solid var(--vintage-gold);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 992px) {
+  .navbar-menu {
+    gap: 20px;
+    font-size: 16px;
+  }
+  .navbar button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .navbar-right {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .navbar-mobile-toggle {
+    display: block;
+  }
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--navbar-bg-gradient);
+    flex-direction: column;
+    padding: 80px 30px 30px;
+    transition: var(--transition);
+    box-shadow: -5px 0 15px rgba(89, 74, 60, 0.15);
+    z-index: 1001;
+  }
+  .navbar-menu.active {
+    right: 0;
+  }
+  .navbar-menu li {
+    padding: 15px 0;
+    border-bottom: 1px dashed var(--accent-color); /* Đồng bộ với Footer */
+  }
+  .navbar-right {
+    gap: 15px;
+  }
+
+  /* Hiển thị mobile-only elements */
+  .mobile-only {
+    display: block;
+  }
+
+  /* Hiển thị nút đóng trong menu mobile */
+  .mobile-menu-close {
+    display: flex;
+  }
+
+  .navbar button {
+    display: none;
+  }
+  .mobile-button {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(89, 74, 60, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 1000;
+  }
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Cải thiện menu profile trên mobile */
+  .nav-profile-dropdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 300px;
+    padding: 20px;
+    border: 2px dashed var(--accent-color);
+    background-color: var(--vintage-cream);
+  }
+
+  .navbar-profile:hover .nav-profile-dropdown {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

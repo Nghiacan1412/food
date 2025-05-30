@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;800&display=swap");
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(135deg, #eee1d6 0%, #dcbbaa 100%);
+  padding: clamp(15px, 2vw, 20px); /* Responsive padding */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  transition: width 0.3s ease; /* Thêm hiệu ứng khi thu gọn/mở rộng */
+}
+
+/* Cải tiến thanh cuộn */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+  transition: opacity 0.2s;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(238, 225, 214, 0.3);
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #bb9683;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: #a07b6a;
+}
+
+/* Container options */
+.sidebar-options {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0 0.625rem;
+  flex-grow: 1; /* Cho phép mở rộng để lấp đầy không gian */
+}
+
+/* Option cải tiến */
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Hiệu ứng mượt hơn */
+  cursor: pointer;
+  border: 2px solid transparent;
+  backdrop-filter: blur(2px); /* Hiệu ứng mờ nhẹ */
+}
+
+/* Hover effect cải tiến */
+.sidebar-option:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(5px); /* Dịch chuyển nhẹ thay vì scale */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Icon cải tiến */
+.sidebar-option img {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  object-fit: contain;
+  filter: brightness(0.9); /* Điều chỉnh độ sáng nhẹ */
+  transition: transform 0.2s;
+}
+
+.sidebar-option:hover img {
+  transform: scale(1.1); /* Phóng to icon khi hover */
+}
+
+/* Text cải tiến */
+.sidebar-option p {
+  font-family: "Baloo 2", cursive;
+  font-size: clamp(14px, 1.5vw, 15px); /* Responsive font-size */
+  font-weight: 500;
+  color: #7f3a14;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+
+.sidebar-option:hover p {
+  color: #5f2a0f; /* Đậm hơn khi hover */
+}
+
+/* Active state cải tiến */
+.sidebar-option.active {
+  background: white;
+  border: 2px solid rgb(151, 70, 16);
+  box-shadow: 0 4px 12px rgba(151, 70, 16, 0.2);
+  transform: translateX(3px);
+}
+
+/* Logo cải tiến */
+.sidebar-logo {
+  margin-bottom: 1.5rem;
+  align-self: center;
+  width: 80%; /* Responsive width */
+  max-width: 150px;
+}
+
+/* Media query cho responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar-option {
+    padding: 10px 12px;
+  }
+
+  .sidebar-option img {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -1,0 +1,202 @@
+/* Import font Baloo 2 từ Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap");
+
+/* Định nghĩa các biến màu */
+:root {
+  --vintage-dark-brown: #4a2c2a; /* Màu nâu đậm vintage */
+  --vintage-shadow: rgba(74, 44, 42, 0.3); /* Bóng màu nâu nhạt */
+  --vintage-light-beige: #f8e1d9; /* Màu be nhạt */
+  --vintage-soft-white: #fffaf5; /* Màu trắng ngà */
+  --vintage-accent: #d4a373; /* Màu vàng nhạt vintage làm điểm nhấn */
+}
+
+/* Keyframes cho các hiệu ứng chuyển động */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.app-download {
+  margin: 120px auto;
+  padding: 60px 20px;
+  max-width: 900px;
+  background: linear-gradient(
+    135deg,
+    var(--vintage-light-beige) 0%,
+    var(--vintage-soft-white) 100%
+  );
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Baloo 2", sans-serif;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1s ease-out forwards; /* Hiệu ứng fade-in khi tải trang */
+}
+
+/* Hiệu ứng nền động */
+.app-download::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 70%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+  animation: wave 4s infinite ease-in-out; /* Hiệu ứng sóng nhẹ cho nền */
+}
+
+.app-download p {
+  font-family: "Baloo 2", sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: var(--vintage-dark-brown);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  text-align: center;
+  text-shadow: 2px 2px 4px var(--vintage-shadow);
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tách từng dòng trong <p> để thêm hiệu ứng wave */
+.app-download p span {
+  display: inline-block;
+  animation: wave 2s infinite ease-in-out;
+}
+
+/* Dòng thứ hai có độ trễ để tạo hiệu ứng sóng */
+.app-download p span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+/* Gạch chân với hiệu ứng gradient động */
+.app-download p::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 39%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    var(--vintage-dark-brown),
+    var(--vintage-accent)
+  );
+  border-radius: 3px;
+  opacity: 0.5;
+  animation: wave 3s infinite ease-in-out;
+}
+
+.app-download-platforms {
+  display: flex;
+  justify-content: center;
+  gap: max(3vw, 30px);
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.app-download-platforms img {
+  width: max(30vw, 140px);
+  max-width: 200px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  background-color: var(--vintage-soft-white);
+  padding: 12px;
+}
+
+.app-download-platforms img:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  animation: wiggle 0.6s ease; /* Hiệu ứng lắc nhẹ khi hover */
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .app-download {
+    margin: 80px auto;
+    padding: 40px 15px;
+  }
+
+  .app-download p {
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    letter-spacing: 1.5px;
+  }
+
+  .app-download-platforms {
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .app-download-platforms img {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-download {
+    padding: 30px 10px;
+  }
+
+  .app-download p {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    letter-spacing: 1px;
+  }
+
+  .app-download-platforms {
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .app-download-platforms img {
+    max-width: 130px;
+  }
+}

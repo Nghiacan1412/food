@@ -1,0 +1,142 @@
+/* Tổng quan */
+.add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: #f8f3e9;
+  box-shadow: 3px 3px 10px rgba(139, 94, 60, 0.2);
+  border-radius: 8px;
+  border: 1px solid #d9c5a9;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Upload Image */
+.add-img-upload {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.add-img-upload label {
+  display: block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.add-img-upload label:hover {
+  transform: scale(1.05);
+}
+
+.add-img-upload img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 2px dashed #c8a887;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #faf6f0;
+}
+
+/* Input chung */
+.add-product-name input,
+.add-product-description textarea,
+.add-category select,
+.add-price input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0b89e;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #fdfbf7;
+  color: #654321;
+  font-family: "Baloo 2", cursive;
+  transition: all 0.3s ease;
+}
+
+.add-product-name input:focus,
+.add-product-description textarea:focus,
+.add-category select:focus,
+.add-price input:focus {
+  outline: none;
+  border-color: #a87d4c;
+  box-shadow: 0 0 5px rgba(168, 125, 76, 0.3);
+  background-color: #ffffff;
+}
+
+.add-product-description textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* Labels */
+.add p {
+  font-family: "Baloo 2", cursive;
+  color: #8b5e3c;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+/* Danh mục và giá sản phẩm */
+.add-category-price {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.add-category,
+.add-price {
+  width: 50%;
+}
+
+/* Nút Thêm */
+.add-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #a87d4c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Baloo 2", cursive;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
+.add-btn:hover {
+  background-color: #8b5e3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.add-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* App content layout */
+.app-content {
+  display: flex;
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  background-color: #faf6f0;
+}

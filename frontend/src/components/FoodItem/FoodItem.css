@@ -1,0 +1,356 @@
+:root {
+  --vintage-rust: #a35638;
+  --primary-color: #b22222;
+  --text-dark: #333333;
+  --text-light: #676767;
+  --bg-color: #f9f5f0;
+  --card-bg: white;
+  --border-radius: 30px;
+  --shadow-sm: 0 12px 25px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 35px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --font-family: "Quicksand", sans-serif;
+}
+
+.food-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--bg-color);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.food-item {
+  width: 100%;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  align-items: center;
+  height: 100%;
+}
+
+.food-item:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.food-item:active {
+  transform: translateY(-5px);
+}
+
+.food-item-img-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+.food-item-name-rating img {
+  width: 65px;
+}
+.food-item {
+  overflow: hidden; /* Ngăn ảnh tràn ra ngoài khi scale */
+  position: relative; /* Đảm bảo container cha là tham chiếu cho các hiệu ứng */
+}
+
+.food-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  transition: transform 0.5s ease; /* Transition chậm hơn, mượt hơn */
+}
+
+.food-item:hover .food-item-image {
+  transform: scale(1.05); /* Phóng to nhẹ nhàng */
+}
+
+.food-item:hover {
+  /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Bóng đổ nhẹ để tăng chiều sâu */
+  transition: box-shadow 0.7s ease;
+}
+
+.food-item-info {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  min-height: 200px; /* Đặt chiều cao tối thiểu */
+  max-height: 240px; /* Đặt chiều cao tối đa */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều cao */
+}
+
+.food-item-name-rating {
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+  align-items: center; /* Căn giữa nội dung theo chiều dọc */
+  width: 100%; /* Đảm bảo chiếm toàn bộ chiều ngang */
+}
+
+.food-item-name-rating p {
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-align: center; /* Căn giữa văn bản */
+}
+
+.food-item-desc {
+  color: white;
+  font-size: 15px;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  font-style: italic;
+  text-align: center;
+  flex-grow: 1;
+  margin: var(--spacing-sm) 0;
+  overflow: hidden; /* Ẩn nội dung nếu vượt quá chiều cao */
+  text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Hiển thị tối đa 3 dòng */
+  -webkit-box-orient: vertical;
+  min-height: 60px; /* Đặt chiều cao tối thiểu */
+  max-height: 60px; /* Đặt chiều cao tối đa */
+}
+
+.food-item-price {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: var(--font-family);
+  text-align: center;
+  margin-top: auto; /* Đẩy giá tiền xuống cuối */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px; /* Đặt chiều cao cố định */
+}
+
+.food-item-img-container .add {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  transition: var(--transition);
+  z-index: 5;
+}
+
+.food-item-img-container .add:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.food-item-img-container .add:active {
+  transform: scale(0.95);
+}
+
+.food-item-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: var(--transition);
+  font-weight: 500;
+  font-size: 14px;
+  font-family: var(--font-family);
+}
+
+.food-item-counter:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.food-item-counter button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.food-item-counter button:hover {
+  background-color: rgba(178, 34, 34, 0.1);
+}
+
+.food-item-counter .count {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 992px) {
+  .food-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .food-item-name-rating p {
+    font-size: 18px;
+  }
+
+  .food-item-price {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .food-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+  }
+
+  .food-item-info {
+    padding: 15px;
+    min-height: 140px;
+  }
+
+  .food-item-desc {
+    font-size: 14px;
+  }
+
+  .food-item-counter {
+    bottom: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .food-item-counter button {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+  }
+}
+/* Phần đánh giá */
+.food-item-rating {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.food-item-rating .star {
+  font-size: 20px;
+  color: #ccc; /* Màu sao chưa chọn */
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.food-item-rating .star.filled {
+  color: #ff9800; /* Màu sao đã chọn */
+}
+
+.food-item-rating .star:hover {
+  transform: scale(1.2); /* Phóng to khi hover */
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --card-bg: #955e42;
+    --text-dark: #f0f0f0;
+    --text-light: #b0b0b0;
+    --shadow-sm: 0 12px 25px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 35px rgba(0, 0, 0, 0.4);
+  }
+
+  .food-item {
+    border: 1px solid rgba(3, 3, 2, 0.1);
+  }
+
+  .food-item-counter,
+  .food-item-img-container .add {
+    background-color: #dc5d3a;
+    color: #f0f0f0;
+  }
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(212, 166, 128, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal image */
+.modal-image {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease-in-out;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Optional: Add close button */
+.modal-overlay::after {
+  content: "×";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}

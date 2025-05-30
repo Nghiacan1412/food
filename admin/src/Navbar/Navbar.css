@@ -1,0 +1,144 @@
+/* Navbar.css - Với welcome-text nhỏ hơn và căn giữa */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 30px);
+  background: linear-gradient(to right, #f4e1d2, #f0d9c8);
+  border-bottom: 3px solid #d8b6a4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  transition: background 0.3s ease;
+}
+
+/* Logo */
+.logo {
+  height: 130px;
+  width: auto;
+  filter: sepia(25%) contrast(90%) saturate(85%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, filter;
+}
+
+.logo:hover {
+  transform: scale(1.15) rotate(2deg);
+  filter: sepia(10%) contrast(105%) saturate(120%)
+    drop-shadow(0 4px 15px rgba(255, 175, 75, 0.6));
+}
+
+/* Welcome text nhỏ hơn và căn giữa */
+.welcome-text {
+  position: absolute;
+  margin: 0;
+  top: 50%; /* Căn giữa theo chiều dọc */
+  left: 50%; /* Căn giữa theo chiều ngang */
+  transform: translate(-50%, -50%); /* Điều chỉnh để chính giữa */
+  font-family: "Baloo 2", cursive;
+  font-size: clamp(20px, 3vw, 90px); /* Giảm kích thước tối đa xuống 40px */
+  font-weight: 700;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    #7f3a14,
+    #bb9683,
+    #d8b6a4,
+    #f4e1d2,
+    #d8b6a4,
+    #bb9683,
+    #7f3a14
+  );
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(127, 58, 20, 0.2);
+  animation: animate-gradient 4s linear infinite;
+}
+
+/* Profile */
+.profile {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  border: 3px solid #d8b6a4;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+  background: #fff;
+  padding: 2px;
+}
+
+.profile:hover {
+  border-color: #bb9683;
+  box-shadow: 0 0 15px rgba(216, 182, 164, 0.7), 0 0 5px rgba(255, 175, 75, 0.4);
+  transform: scale(1.1);
+}
+
+/* Keyframes cho gradient */
+@keyframes animate-gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    height: clamp(60px, 15vw, 80px);
+  }
+
+  .profile {
+    height: 45px;
+    width: 45px;
+  }
+
+  .welcome-text {
+    font-size: clamp(18px, 2.5vw, 30px); /* Giảm thêm trên tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .logo {
+    height: clamp(50px, 12vw, 60px);
+    margin: 0;
+  }
+
+  .welcome-text {
+    position: static; /* Bỏ absolute trên mobile */
+    transform: none; /* Bỏ transform */
+    font-size: clamp(16px, 3vw, 20px);
+    text-align: center;
+  }
+
+  .profile {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.navbar.scrolled {
+  background: #f4e1d2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+}
