@@ -98,3 +98,79 @@
     font-size: 14px;
   }
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #d9c5a9;
+  background-color: #f8f3e9;
+  color: #8b5e3c;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Baloo 2", cursive;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+  background-color: #d9c5a9;
+  color: white;
+}
+
+.pagination-btn.active {
+  background-color: #8b5e3c;
+  color: white;
+  border-color: #8b5e3c;
+}
+
+.pagination-btn.nav-btn {
+  font-weight: bold;
+}
+
+.pagination-btn:disabled {
+  background-color: #e0e0e0;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.pagination-btn.ellipsis {
+  background-color: transparent;
+  border: none;
+  color: #8b5e3c;
+  cursor: default;
+}
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 70%;
+  max-width: 600px; /* Giới hạn chiều rộng tối đa */
+  padding: 12px 15px; /* Tăng padding để ô tìm kiếm trông thoáng hơn */
+  border: 2px solid #d9c5a9;
+  border-radius: 25px;
+  font-size: 15px;
+  font-family: "Baloo 2", cursive;
+  transition: all 0.3s ease;
+  background-color: #f8f3e9;
+  color: #654321;
+}
+
+.search-bar input::placeholder {
+  color: #a89b91;
+  font-style: italic;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #8b5e3c;
+  box-shadow: 0 0 10px rgba(139, 94, 60, 0.5);
+  background-color: #ffffff;
+}
